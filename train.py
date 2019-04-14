@@ -15,7 +15,7 @@ from accumulate import AccumulatingOptimizer
 
 CHECKPOINT_DIR = 'checkpoint'
 SAMPLE_DIR = 'samples'
-
+GDRIVE_DIR = input('input the google drive folder name the checkpoint folder will be in - if nothing, type nothing at all.')
 
 parser = argparse.ArgumentParser(
     description='Fine-tune GPT-2 on your custom dataset.',
@@ -138,7 +138,7 @@ def main():
             with open(counter_path, 'w') as fp:
                 fp.write(str(counter) + '\n')
             print('uploading to Google Drive...')
-            gdriveUp = os.popen('cp -r /content/gpt-2/checkpoint/ /content/drive/My\\ Drive/').read()
+            gdriveUp = os.popen('cp -r /content/gpt-2/checkpoint/ /content/drive/My\\ Drive/'+GDRIVE_DIR).read()
             print(gdriveUp)
         def generate_samples():
             context_tokens = data_sampler.sample(1)
