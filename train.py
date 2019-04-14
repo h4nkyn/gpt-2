@@ -137,8 +137,9 @@ def main():
                 global_step=counter)
             with open(counter_path, 'w') as fp:
                 fp.write(str(counter) + '\n')
-                gdriveUp = os.popen('cp -r /content/gpt-2/checkpoint/ /content/drive/My\\ Drive/').read()
-                print(gdriveUp)
+            print('uploading to Google Drive...')
+            gdriveUp = os.popen('cp -r /content/gpt-2/checkpoint/ /content/drive/My\\ Drive/').read()
+            print(gdriveUp)
         def generate_samples():
             context_tokens = data_sampler.sample(1)
             all_text = []
